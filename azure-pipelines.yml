@@ -28,3 +28,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'dropwarfile'
     publishLocation: 'Container'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub techraja1'
+    command: 'login'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Docker Hub techraja1'
+    repository: 'techraja1/demo1'
+    command: 'buildAndPush'
+    Dockerfile: '**/AzureDockerfile'
